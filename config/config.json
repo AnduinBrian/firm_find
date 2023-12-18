@@ -1,0 +1,16 @@
+{
+    "config":{
+        "file": {
+            "webservers_file" :["apache","lighttpd","alphapd","httpd"],
+            "password_file":["passwd","shadow"],
+            "elf_file":["ssh","sshd","scp","sftp","tftp","dropbear","busybox","telnet","telnetd","openssl"]
+        },
+        "extension": {
+            "passwd_file" :["psk"],
+            "conf_file" : ["conf","cfg","ini"],
+            "db_file" : ["db","sqlite","sqlite3"],
+            "ssl_file": ["crt","pem","cer","p7b","p12","key"],
+            "ssh_file":["pub"]
+        }
+    }
+}
