@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os, argparse,json
 
 root_path = ""
@@ -32,9 +33,9 @@ def find_file(file_to_find, all_file):
         file_name = i.split("/")[-1]
         if file_name in file_to_find["webservers_file"]:
             found = 1
-            print("    [-] %s" % (i.split(root_path)[-1]))
+            print("    [*] %s" % (i.split(root_path)[-1]))
     if found == 0:
-        print("    [!] No file be found !!")
+        print("    [!] No file to be found !!")
     
     print("  [-] Finding Password file:")
     found = 0
@@ -42,9 +43,9 @@ def find_file(file_to_find, all_file):
         file_name = i.split("/")[-1]
         if file_name in file_to_find["password_file"]:
             found = 1
-            print("    [-] %s" % (i.split(root_path)[-1]))
+            print("    [*] %s" % (i.split(root_path)[-1]))
     if found == 0:
-        print("    [!] No file be found !!")
+        print("    [!] No file to be found !!")
     
     print("  [-] Finding ELF file:")
     found = 0
@@ -52,9 +53,9 @@ def find_file(file_to_find, all_file):
         file_name = i.split("/")[-1]
         if file_name in file_to_find["elf_file"]:
             found = 1
-            print("    [-] %s" % (i.split(root_path)[-1]))
+            print("    [*] %s" % (i.split(root_path)[-1]))
     if found == 0:
-        print("    [!] No file be found !!")
+        print("    [!] No file to be found !!")
     print("")
 
 def find_extension(ext_to_find, all_file):
@@ -65,9 +66,9 @@ def find_extension(ext_to_find, all_file):
         extension_file_name = i.split(".")[-1]
         if extension_file_name in ext_to_find["passwd_file"]:
             found = 1
-            print("    [-] %s" % ((i.split(root_path)[-1])))
+            print("    [*] %s" % ((i.split(root_path)[-1])))
     if found == 0:
-        print("    [!] No file be found !!")
+        print("    [!] No file to be found !!")
     
     print("  [-] Find config extension file:")
     found = 0
@@ -75,9 +76,9 @@ def find_extension(ext_to_find, all_file):
         extension_file_name = i.split(".")[-1]
         if extension_file_name in ext_to_find["conf_file"]:
             found = 1
-            print("    [-] %s" % ((i.split(root_path)[-1])))
+            print("    [*] %s" % ((i.split(root_path)[-1])))
     if found == 0:
-        print("    [-] No file be found !!")
+        print("    [-] No file to be found !!")
     
     print("  [-] Find Database extension file:")
     found = 0
@@ -85,9 +86,9 @@ def find_extension(ext_to_find, all_file):
         extension_file_name = i.split(".")[-1]
         if extension_file_name in ext_to_find["db_file"]:
             found = 1
-            print("    [-] %s" % ((i.split(root_path)[-1])))
+            print("    [*] %s" % ((i.split(root_path)[-1])))
     if found == 0:
-        print("    [!] No file be found !!")
+        print("    [!] No file to be found !!")
 
     print("  [-] Find SSL extension file:")
     found = 0
@@ -95,9 +96,9 @@ def find_extension(ext_to_find, all_file):
         extension_file_name = i.split(".")[-1]
         if extension_file_name in ext_to_find["ssl_file"]:
             found = 1
-            print("    [-] %s" % ((i.split(root_path)[-1])))
+            print("    [*] %s" % ((i.split(root_path)[-1])))
     if found == 0:
-        print("    [!] No file be found !!")
+        print("    [!] No file to be found !!")
 
     print("  [-] Find SSH extension file:")
     found = 0
@@ -105,15 +106,14 @@ def find_extension(ext_to_find, all_file):
         extension_file_name = i.split(".")[-1]
         if extension_file_name in ext_to_find["ssh_file"]:
             found = 1
-            print("    [-] %s" % ((i.split(root_path)[-1])))
+            print("    [*] %s" % ((i.split(root_path)[-1])))
     if found == 0:
-        print("    [!] No file be found !!")   
-    print("")
+        print("    [!] No file to be found !!")   
 
 if __name__ == "__main__":
     print("")
     print("######################## FIRMWARE SEARCHING ########################")
-    curr_path = os.getcwd()
+    curr_path = os.path.dirname(os.path.realpath(__file__))
     json_path = curr_path + "/config/config.json"
     json_obj = load_config(json_path)
     file_to_find = json_obj["config"]["file"]
@@ -125,5 +125,5 @@ if __name__ == "__main__":
     all_file = list_files(root_path)
     find_file(file_to_find, all_file)
     find_extension(ext_to_find, all_file)
-
+    print("")
 
